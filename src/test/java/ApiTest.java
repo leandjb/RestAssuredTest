@@ -7,7 +7,6 @@ public class ApiTest {
 
     @Test
     void test1(){
-
         Response response = RestAssured.get("https://reqres.in/api/users?page=2");
 
         System.out.println("Response: " + response.asString());
@@ -16,6 +15,7 @@ public class ApiTest {
         System.out.println("Time Elapsed: " + response.getTime());
         System.out.println("Header: " + response.getHeader("content-type"));
 
+//assert with TestNG
         int statusCode = response.statusCode();
         Assert.assertEquals(statusCode, 200);
 
@@ -23,11 +23,9 @@ public class ApiTest {
 
     @Test
     void  test2(){
-
         RestAssured.given().
                 get("https://reqres.in/api/users?page=2").
                 then().
                 statusCode(200);
     }
-
 }
