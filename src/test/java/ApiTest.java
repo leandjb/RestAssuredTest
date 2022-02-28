@@ -1,5 +1,6 @@
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ApiTest {
@@ -9,11 +10,24 @@ public class ApiTest {
 
         Response response = RestAssured.get("https://reqres.in/api/users?page=2");
 
-        System.out.println("Response" + response.asString());
-        System.out.println("Status Code:" + response.getStatusCode());
-        System.out.println("Body:" + response.getBody().asString());
-        System.out.println("Time Elapsed:" + response.getTime());
-        System.out.println("Header:" + response.getHeader("content-type"));
+        System.out.println("Response: " + response.asString());
+        System.out.println("Status Code: " + response.getStatusCode());
+        System.out.println("Body: " + response.getBody().asString());
+        System.out.println("Time Elapsed: " + response.getTime());
+        System.out.println("Header: " + response.getHeader("content-type"));
+
+        int statusCode = response.statusCode();
+        Assert.assertEquals(statusCode, 200);
 
     }
+
+    @Test
+    void  test2(){
+
+        RestAssured.given().
+                get("https://reqres.in/api/users?page=2").
+                then().
+                statusCode(200);
+    }
+
 }
