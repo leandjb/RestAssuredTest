@@ -26,6 +26,14 @@ public class ApiTest {
         RestAssured.given().
                 get("https://reqres.in/api/users?page=2").
                 then().
-                statusCode(300);
+                statusCode(200);
+    }
+
+    @Test
+    void  test3(){
+        RestAssured.given().
+                get("https://reqres.in/api/users?page=3").
+                then().
+                statusCode(200);
     }
 }
