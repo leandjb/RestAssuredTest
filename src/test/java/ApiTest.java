@@ -7,13 +7,14 @@ public class ApiTest {
 
     @Test
     void test1(){
-        Response response = RestAssured.get("https://reqres.in/api/users?page=2");
+        Response response = RestAssured.get("https://swapi.dev/api/people/10/");
 
         System.out.println("Response: " + response.asString());
         System.out.println("Status Code: " + response.getStatusCode());
         System.out.println("Body: " + response.getBody().asString());
         System.out.println("Time Elapsed: " + response.getTime());
         System.out.println("Header: " + response.getHeader("content-type"));
+
 
 //assert with TestNG
         int statusCode = response.statusCode();
